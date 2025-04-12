@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>                      
+<body>
+    <script>
+        let choice;
+        let staffs = [];
+        function displayStaffs() {
+            console.table(staffs);
+        }
+        do {
+            choice = +prompt( 
+`               1.Thêm nhân viên mới
+                2. Xóa nhân viên             
+                3. Cập nhật mức lương của nhân viên
+                4. Tìm kiếm nhân viên theo tên
+                5. Thoát chương trình`
+            )
+            switch (choice) {
+                case 1:
+                    let id = Math.ceil(Math.random() * 100000000);
+                    let nameStaff = prompt("Nhập tên nhân viên: ");
+                    let salary = +prompt("Nhập mức lương nhân viên: ");
+                    let position = prompt("Nhập vị trí nhân viên: ");
+                    const staff = {
+                        id,
+                        nameStaff,
+                        salary,
+                        position,
+                    };
+                    staffs.push(staff);
+                    displayStaffs()
+                    break;
+                case 2:
+                    let idDelete = +prompt("Nhập id nhân viên cần xóa: ");
+                    let findIndexDelete = staffs.findIndex( (staff) => {
+                           return staff.id === idDelete;
+                        }
+                    )
+                    if (findIndexDelete !== -1) {
+                        staffs.splice(findIndexDelete, 1);
+                        console.log(`Xóa thành công nhân viên ${staffs[findIndexDelete].name} có id ${idDelete} `);
+                    } else {
+                        console.log(`Không tìm thấy nhân viên có id ${idDelete} `);                        
+                        }  
+                    displayStaffs();   
+                    break;
+                case 3:
+                    let idUpdateSalary = +prompt("Nhập id nhân viên muốn cập nhật lương: ");
+                    let findIndexUpdateSalary = staffs.findIndex( (staff) => {
+                           return staff.id === idUpdateSalary;
+                        }
+                    )
+                    if (findIndexUpdateSalary !== -1) {
+                        let newSalary = +prompt("Nhập mức lương mới: ");
+                        staffs[findIndexUpdateSalary].salary = newSalary;
+                        console.log(`Cập nhật thành công mức lương nhân viên ${staffs[findIndexUpdateSalary].name} có id ${idUpdateSalary} `);
+                    } else {
+                        console.log(`Không tìm thấy nhân viên có id ${idUpdateSalary} `);                        
+                        }
+                    displayStaffs();
+                    break;
+                case 4:
+                    let nameSearch = prompt("Nhập tên nhân viên cần tìm: ");
+                    let findNameStaff = staffs.find ( (staff)  =>{
+                        return staff.nameStaff === nameSearch;
+                    });
+                    if (findNameStaff) {
+                        console.log(`Tìm thấy nhân viên ${findNameStaff.nameStaff} có id ${findNameStaff.id}`);
+                    } else {
+                        console.log(`Không tìm thấy nhân viên có tên ${nameSearch} `);                        
+                        }
+                    displayStaffs();
+                    break;            
+                default:
+                    console.log("Không có lựa chọn này, vui lòng chọn lại!");
+                    break;
+            }
+        } while (choice!==5);
+     </script>
+</body>
+</html>

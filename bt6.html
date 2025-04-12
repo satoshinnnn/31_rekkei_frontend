@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form id="form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function checkEmail(email) {
+            if (email === "huanrose@gmail.com") {
+                return true;
+            }
+        }
+        function checkName(name) {
+            if (name === "Huan") {
+                return true;
+            }
+        }
+        const form = document.getElementById("form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            checkName(name);
+            checkEmail(email);
+            if (checkEmail(email) && checkName(name)) {
+                console.log("Form submitted successfully!");
+            } else {
+                console.log("Invalid name or email.");
+            }
+        });
+    </script>
+</body>
+</html>

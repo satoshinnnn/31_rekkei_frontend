@@ -1,0 +1,17 @@
+#text {
+    width: 500px;
+    height: 100px;
+    margin: 0 auto;          /* Căn giữa modal */
+    padding: 5px;
+    border-radius: 5px;
+    display: none;           /* Ẩn modal ban đầu */
+    background-color: white; /* Thêm màu nền cho modal */
+    position: relative;      /* Để có thể điều chỉnh icon */
+}
+
+#icon {
+    position: absolute;      /* Để icon nằm ở góc phải */
+    top: 5px;                /* Cách trên 5px */
+    right: 5px;              /* Cách phải 5px */
+    cursor: pointer;         /* Chỉ thị con trỏ khi hover vào icon */
+}
